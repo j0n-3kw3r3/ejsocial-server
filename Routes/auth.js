@@ -19,10 +19,10 @@ router.post("/registration", async (req, res) => {
 
     // save new user and respond
     const user = await newUser.save();
-    res.status(200).json(user);
+   return res.status(200).json(user);
   } catch (error) {
-    res.status(500).json(error);
     console.log(error);
+   return res.status(500).json(error);
   }
 });
 
@@ -42,9 +42,9 @@ router.post("/login", async (req, res) => {
       );
       !validPassword && res.status(400).json("wrong password");
 
-      res.json(user);
+      return res.json(user);
     } catch (error) {
-      res.status(500).json(error);
+      return res.status(500).json(error);
     }
   } else {
     try {
@@ -60,9 +60,9 @@ router.post("/login", async (req, res) => {
       );
       !validPassword && res.status(400).json("wrong password");
 
-      res.json(user);
+      return res.json(user);
     } catch (error) {
-      res.status(500).json(error);
+      return res.status(500).json(error);
     }
   }
 });

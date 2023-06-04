@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
   const message = await new Messages(req.body);
   try {
     newMessage = await message.save();
-    res.status(200).json(newMessage);
+    return res.status(200).json(newMessage);
   } catch (err) {
     console.log(err);
   }
@@ -20,7 +20,7 @@ router.get("/:conversationId", async (req, res) => {
     conversationId: req.params.conversationId,
   });
   try {
-    res.status(200).json(message);
+    return res.status(200).json(message);
   } catch (error) {
     console.log(error);
   }

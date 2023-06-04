@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
 
   try {
     const savedConversations = await newConversations.save();
-    res.status(200).json(savedConversations);
+  return res.status(200).json(savedConversations);
   } catch (error) {
     console.log(error);
   }
@@ -22,7 +22,7 @@ router.get("/:userId", async (req, res) => {
     members: req.params.userId,
   });
   try {
-    res.status(200).json(conversations);
+  return res.status(200).json(conversations);
   } catch (error) {
     console.log(error);
   }
@@ -34,9 +34,9 @@ router.get("/find/:firstUserId/:secondUserId", async (req, res) => {
     const conversations = await Conversations.findOne({
       members: { $all: [req.params.firstUserId, req.params.secondUserId] },
     });
-     res.status(200).json(conversations);
+     return res.status(200).json(conversations);
   } catch (error) {
-    res.status(200).json(error);
+   return res.status(200).json(error);
   }
 });
 
